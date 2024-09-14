@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="6dp"
+    app:cardMaxElevation="10dp"
+    android:layout_gravity="start"
+    android:layoutDirection="rtl"
+    android:textDirection="rtl"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
+    android:layout_marginTop="12dp"
+    android:layout_marginBottom="4dp"
+    app:cardUseCompatPadding="false">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/comment_item_card_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="?attr/selectableItemBackground"
+        android:paddingBottom="7dp">
+
+        <TextView
+            android:id="@+id/comment_item_author_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:ellipsize="end"
+            android:focusable="false"
+            android:fontFamily="sans-serif-medium"
+            android:maxLines="3"
+            android:gravity="right"
+            android:textDirection="rtl"
+            android:paddingTop="@dimen/feed_item_text_margin"
+            android:paddingRight="@dimen/feed_item_text_margin"
+            android:paddingLeft="@dimen/feed_item_text_margin"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/comment_item_author_view"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:maxLines="1"
+            tools:text="יהודה לוי" />
+
+        <TextView
+            android:id="@+id/comment_item_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/feed_item_text_margin"
+            android:layout_marginEnd="@dimen/feed_item_text_margin"
+            android:gravity="right"
+            android:textDirection="rtl"
+            android:autoLink="all"
+            android:clickable="false"
+            android:ellipsize="end"
+            android:focusable="false"
+            android:fontFamily="sans-serif-light"
+            android:linksClickable="false"
+            android:longClickable="false"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:maxLines="6"
+            android:textColor="@color/gray_600"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/comment_title_barrier"
+            tools:text="@tools:sample/lorem/random" />
+
+        <TextView
+            android:id="@+id/comment_item_sent_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/feed_item_text_margin"
+            android:autoLink="all"
+            android:clickable="false"
+            android:focusable="false"
+            android:fontFamily="sans-serif-condensed-light"
+            android:maxLines="1"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:gravity="right"
+            android:textDirection="rtl"
+            android:layoutDirection="rtl"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/comment_item_description"
+            android:text="@string/sent_in" />
+
+        <TextView
+            android:id="@+id/comment_item_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="all"
+            android:clickable="false"
+            android:ellipsize="end"
+            android:focusable="false"
+            android:textSize="12sp"
+            android:fontFamily="sans-serif-condensed-light"
+            android:maxLines="1"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:textStyle="normal"
+            android:layout_marginRight="3dp"
+            android:gravity="right"
+            android:textDirection="rtl"
+            android:layoutDirection="rtl"
+            app:layout_constraintBottom_toBottomOf="@+id/comment_item_sent_in"
+            app:layout_constraintRight_toLeftOf="@+id/comment_item_sent_in"
+            tools:text="16/20/2022" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/comment_title_barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:constraint_referenced_ids="comment_item_author_view,comment_item_author_name"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comment_item_author_name" />
+
+        <com.triPCups.blogs.base.custom_views.AuthorView
+            android:id="@+id/comment_item_author_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:authorView_size="SMALL"
+            android:padding="10dp"
+            tools:visibility="gone"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

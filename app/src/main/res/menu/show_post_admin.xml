@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_edit"
+        android:orderInCategory="100"
+        android:title="edit"
+        android:iconTint="@color/true_black"
+        android:icon="@drawable/ic_pencil"
+        app:showAsAction="always" />
+
+<!--    <item-->
+<!--        android:id="@+id/action_new"-->
+<!--        android:orderInCategory="100"-->
+<!--        android:title="/create"-->
+<!--        android:iconTint="@color/true_black"-->
+<!--        android:titleCondensed="edit"-->
+<!--        app:showAsAction="never" />-->
+
+<!--    <item-->
+<!--        android:id="@+id/action_delete"-->
+<!--        android:orderInCategory="100"-->
+<!--        android:title="delete"-->
+<!--        android:iconTint="@color/true_black"-->
+<!--        app:showAsAction="never" />-->
+
+
+</menu>

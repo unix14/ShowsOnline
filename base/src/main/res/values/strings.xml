@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="blogpost_comments_section_title">תגובות</string>
+    <string name="blogpost_relevant_posts_section_title">הצגות נוספות</string>
+    <string name="blogpost_links_section_title">קישורים</string>
+    <string name="website">אתר</string>
+    <string name="enter_your_comment">רשמו לנו אם אהבתם את ההצגה\nואל תשכחו לשתף אותה לחברים :)\n</string>
+    <string name="empty_comment">התגובה ריקה</string>
+    <string name="comment_sent">התגובה נשלחה</string>
+    <string name="comment_updated">התגובה עודכנה</string>
+    <string name="comment_send">שליחה</string>
+    <string name="title">כותרת</string>
+    <string name="name">שם</string>
+    <string name="sent_in">נשלח בתאריך</string>
+
+</resources>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:scrollbars="vertical"
+    android:scrollbarThumbVertical="@drawable/scrollbar_vertical"
+    tools:context=".ui.read_post.ReadPostFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="true"
+        android:layoutDirection="rtl"
+        tools:context=".ui.read_post.ReadPostFragment">
+
+        <ImageView
+            android:id="@+id/post_image"
+            android:layout_width="0dp"
+            android:layout_height="340dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toTopOf="@id/post_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/post_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/feed_item_text_margin"
+            android:paddingRight="3dp"
+            android:paddingLeft="3dp"
+            android:fontFamily="sans-serif-condensed-light"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/post_image"
+            tools:maxLines="3"
+            tools:text="@tools:sample/lorem/random" />
+
+        <TextView
+            android:id="@+id/post_short_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/feed_item_text_margin"
+            android:layout_marginTop="@dimen/feed_item_text_margin"
+            android:layout_marginEnd="@dimen/feed_item_text_margin"
+            android:autoLink="all"
+            android:fontFamily="sans-serif-condensed-light"
+            android:gravity="center"
+            android:paddingBottom="@dimen/feed_item_text_margin"
+            android:textColor="@color/black"
+            android:textColorLink="@color/hyper_link_text_color_selector"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/post_title"
+            tools:maxLines="3"
+            tools:text="@tools:sample/lorem/random" />
+
+        <com.triPCups.blogs.base.custom_views.AuthorView
+            android:id="@+id/post_author"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/feed_item_text_margin"
+            android:padding="4dp"
+            android:visibility="gone"
+            app:authorView_size="MEDIUM"
+            app:layout_constraintEnd_toStartOf="@+id/post_tags"
+            app:layout_constraintStart_toStartOf="@id/post_short_description"
+            app:layout_constraintTop_toBottomOf="@id/post_short_description" />
+
+        <TextView
+            android:id="@+id/post_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-light"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textDirection="rtl"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="@id/post_short_description"
+            app:layout_constraintStart_toEndOf="@id/post_author"
+            app:layout_constraintTop_toTopOf="@id/post_author"
+            tools:text="@tools:sample/lorem/random" />
+
+        <TextView
+            android:id="@+id/post_tags"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autoLink="all"
+            android:clickable="false"
+            android:focusable="false"
+            android:fontFamily="sans-serif-condensed-light"
+            android:padding="3dp"
+            android:gravity="center"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="@id/post_short_description"
+            app:layout_constraintStart_toEndOf="@id/post_author"
+            app:layout_constraintTop_toBottomOf="@id/post_date"
+            tools:maxLines="3"
+            tools:text="@tools:sample/lorem/random" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/post_author_and_tags_barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="post_author,post_tags" />
+
+        <View
+            android:id="@+id/post_content_divider"
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:background="@color/gray_600"
+            android:layout_marginTop="@dimen/feed_item_text_margin"
+            android:elevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/post_author_and_tags_barrier" />
+
+        <TextView
+            android:id="@+id/post_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/feed_item_text_margin"
+            android:layout_marginTop="@dimen/feed_item_text_margin"
+            android:layout_marginEnd="@dimen/feed_item_text_margin"
+            android:autoLink="all"
+            android:fontFamily="sans-serif-condensed-light"
+            android:gravity="top|start"
+            android:paddingTop="24dp"
+            android:paddingBottom="12dp"
+            android:paddingRight="3dp"
+            android:scrollbars="none"
+            android:paddingLeft="3dp"
+            android:textColor="@color/black"
+            android:textColorLink="@color/hyper_link_text_color_selector"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/post_content_divider"
+            tools:text="@tools:sample/lorem/random" />
+
+        <com.triPCups.blogs.base.custom_views.LinksView
+            android:id="@+id/post_links"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/post_content" />
+
+        <com.triPCups.blogs.base.custom_views.CommentsView
+            android:id="@+id/post_comments"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/post_links" />
+
+        <com.triPCups.blogs.base.custom_views.RelatedPostsView
+            android:id="@+id/post_related_posts"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/post_comments" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:fitsSystemWindows="true">
+
+    <ImageView
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/invitation_code_text"
+        android:gravity="center"
+        android:textSize="36sp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:padding="24dp"
+        tools:text="Your invitation code is:\n\n420af"
+        android:textStyle="bold"
+        android:textColor="@color/true_white"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/app_logo"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/nav_header_desc"
+        android:elevation="42dp"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/hello_text"
+        android:gravity="center"
+        android:textSize="22sp"
+        android:fontFamily="sans-serif"
+        android:padding="24dp"
+        android:layout_marginBottom="24dp"
+        android:textStyle="bold"
+        android:textColor="@color/true_white"
+        android:layout_gravity="bottom|center"
+        android:visibility="gone"
+        tools:visibility="visible"
+        tools:text="Hello 3P Cups"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</FrameLayout>

@@ -1,0 +1,68 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'com.google.gms.google-services'
+    id 'org.jetbrains.kotlin.android'
+    id "androidx.navigation.safeargs"
+
+    id 'com.google.firebase.crashlytics'
+}
+
+android {
+    compileSdk 33
+    namespace "com.triPCups.blogs.showsOnline"
+
+    defaultConfig {
+        applicationId "com.triPCups.blogs.showsOnline"
+        minSdk 21
+        targetSdk 33
+        versionCode 422
+        versionName "4.2.2"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'uploaderKey'
+            keyPassword 'e159263Ee'
+            storeFile file("C:\\Users\\Workstation\\Desktop\\showsOnline\\keystore\\keystore.jks")
+            storePassword 'e159263Ee'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+}
+
+dependencies {
+    implementation project(path: ':base')
+
+
+    //Firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
+
+    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("com.google.firebase:firebase-crashlytics")
+    implementation("com.google.firebase:firebase-analytics")
+//    implementation 'androidx.core:core-ktx:1.10.1'
+
+    //ads
+    implementation 'com.google.android.gms:play-services-ads:22.5.0'
+
+}

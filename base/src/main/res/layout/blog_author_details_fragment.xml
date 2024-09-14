@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:layout_gravity="bottom"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="6dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardMaxElevation="10dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/feed_item_card_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="?attr/selectableItemBackground"
+        android:paddingBottom="7dp">
+
+
+        <com.triPCups.blogs.base.custom_views.AuthorView
+            android:id="@+id/author_fragment_author_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:authorView_size="BIG"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/author_fragment_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/feed_item_text_margin"
+            android:layout_marginEnd="@dimen/feed_item_text_margin"
+            android:autoLink="all"
+            android:gravity="center"
+            android:fontFamily="sans-serif-light"
+            android:linksClickable="false"
+            android:longClickable="false"
+            android:padding="3dp"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/author_fragment_author_view"
+            tools:text="@tools:sample/lorem/random" />
+
+
+        <TextView
+            android:id="@+id/author_fragment_link"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/feed_item_text_margin"
+            android:autoLink="all"
+            android:gravity="center"
+            android:fontFamily="sans-serif-light"
+            android:padding="13dp"
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="@color/gray_400"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/author_fragment_description"
+            android:text="@string/website" />
+
+
+        <!--        <TextView-->
+<!--            android:id="@+id/author_tags"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="@dimen/feed_item_text_margin"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:layout_marginEnd="@dimen/feed_item_text_margin"-->
+<!--            android:autoLink="all"-->
+<!--            android:clickable="false"-->
+<!--            android:ellipsize="end"-->
+<!--            android:focusable="false"-->
+<!--            android:fontFamily="sans-serif-condensed-light"-->
+<!--            android:maxLines="1"-->
+<!--            android:padding="3dp"-->
+<!--            android:textStyle="normal"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/feed_item_description"-->
+<!--            tools:text="@tools:sample/lorem/random" />-->
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

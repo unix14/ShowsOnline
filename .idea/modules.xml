@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BlogApp.iml" filepath="$PROJECT_DIR$/.idea/modules/BlogApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BlogApp.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BlogApp.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BlogApp.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BlogApp.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BlogApp.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BlogApp.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BlogApp.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BlogApp.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/base/BlogApp.base.iml" filepath="$PROJECT_DIR$/.idea/modules/base/BlogApp.base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/base/BlogApp.base.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/base/BlogApp.base.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/base/BlogApp.base.main.iml" filepath="$PROJECT_DIR$/.idea/modules/base/BlogApp.base.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/base/BlogApp.base.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/base/BlogApp.base.unitTest.iml" />
+    </modules>
+  </component>
+</project>

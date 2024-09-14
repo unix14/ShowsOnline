@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_add"
+        android:icon="@drawable/ic_note_add"
+        android:iconTint="@color/true_black"
+        android:orderInCategory="100"
+        android:title="פוסט חדש"
+        app:showAsAction="always" />
+
+<!--    <item-->
+<!--        android:id="@+id/share_post"-->
+<!--        android:icon="@drawable/ic_share"-->
+<!--        android:orderInCategory="100"-->
+<!--        android:title="@string/share"-->
+<!--        app:showAsAction="never" />-->
+
+</menu>

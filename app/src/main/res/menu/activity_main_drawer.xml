@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="@string/menu_home" />
+
+        <!--        <item-->
+        <!--            android:id="@+id/nav_shows_by_theater"-->
+        <!--            android:icon="@drawable/ic_home"-->
+        <!--            android:title="הצגות לפי תיאטרון" />-->
+
+        <!--        <item-->
+        <!--            android:id="@+id/nav_old_shows"-->
+        <!--            android:icon="@drawable/ic_home"-->
+        <!--            android:title="הצגות ישנות" />-->
+
+        <!--        //todo think about this-->
+
+
+        <!--        <item-->
+        <!--            android:id="@+id/nav_summaries"-->
+        <!--            android:icon="@drawable/ic_sumary"-->
+        <!--            android:title="@string/menu_summary" />-->
+
+        <!--        <item-->
+        <!--            android:id="@+id/nav_interview_questions"-->
+        <!--            android:icon="@drawable/ic_question_answer"-->
+        <!--            android:title="Interview Questions" />-->
+
+        <!--        <item-->
+        <!--            android:id="@+id/nav_assignments"-->
+        <!--            android:icon="@drawable/ic_home_work"-->
+        <!--            android:title="Assignments" />-->
+
+    </group>
+        <group
+            android:id="@+id/app_section"
+            android:checkableBehavior="single">
+
+    <item
+        android:id="@+id/nav_more_apps"
+        android:icon="@drawable/ic_android"
+        android:title="@string/resources" />
+
+    <item
+        android:id="@+id/nav_contact"
+        android:icon="@drawable/ic_contact"
+        android:title="@string/contact_us" />
+
+    <item
+        android:id="@+id/nav_about"
+        android:icon="@drawable/ic_about"
+        android:title="@string/menu_about" />
+    </group>
+
+    <group
+        android:id="@+id/admin_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_qa"
+            android:icon="@drawable/ic_trippy_cups"
+            android:title="@string/menu_qa"
+            tools:ignore="UnusedAttribute" />
+    </group>
+
+
+</menu>

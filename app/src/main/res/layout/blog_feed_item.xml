@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="6dp"
+    app:cardMaxElevation="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    app:cardUseCompatPadding="false">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/feed_item_card_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="?attr/selectableItemBackground"
+        android:paddingBottom="6dp">
+
+        <ImageView
+            android:id="@+id/feed_item_image"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/feed_item_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:ellipsize="end"
+            android:focusable="false"
+            android:fontFamily="sans-serif-condensed-light"
+            android:maxLines="1"
+            android:padding="@dimen/feed_item_text_margin"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/feed_item_image"
+            tools:text="@tools:sample/lorem/random" />
+
+        <TextView
+            android:id="@+id/feed_item_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:ellipsize="end"
+            android:focusable="false"
+            android:fontFamily="sans-serif-condensed-light"
+            android:maxLines="2"
+            android:gravity="center"
+            android:padding="@dimen/feed_item_text_margin"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/feed_item_image"
+            tools:text="המסע המופלא לארץ המילים - תיאטרון המדיטק" />
+
+
+        <TextView
+            android:id="@+id/feed_item_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/feed_item_text_margin"
+            android:layout_marginEnd="@dimen/feed_item_text_margin"
+            android:autoLink="all"
+            android:clickable="false"
+            android:ellipsize="end"
+            android:focusable="false"
+            android:fontFamily="sans-serif-light"
+            android:linksClickable="false"
+            android:longClickable="false"
+            android:maxLines="3"
+            android:padding="3dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textColorLink="@color/hyper_link_text_color_selector"
+            android:textSize="17sp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/feed_item_title"
+            tools:text="משך ההצגה: 1:14" />
+
+        <TextView
+            android:id="@+id/feed_item_tags"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/feed_item_text_margin"
+            android:layout_marginTop="@dimen/feed_item_text_margin"
+            android:layout_marginEnd="@dimen/feed_item_text_margin"
+            android:autoLink="all"
+            android:clickable="false"
+            android:ellipsize="end"
+            android:focusable="false"
+            android:padding="3dp"
+            android:fontFamily="sans-serif-condensed-light"
+            android:maxLines="1"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toStartOf="@+id/feed_item_author_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/feed_item_description"
+            tools:text="@tools:sample/lorem/random" />
+
+
+        <com.triPCups.blogs.base.custom_views.AuthorView
+            android:id="@+id/feed_item_author_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:layout_marginEnd="@dimen/feed_item_text_margin"
+            android:clickable="false"
+            android:focusable="false"
+            app:authorView_size="SMALL"
+            app:layout_constraintBottom_toBottomOf="@id/feed_item_tags"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/feed_item_tags" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

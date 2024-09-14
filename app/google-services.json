@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1011224902660",
+    "project_id": "shows-online",
+    "storage_bucket": "shows-online.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1011224902660:android:556c82fb4dfb222b680951",
+        "android_client_info": {
+          "package_name": "com.triPCups.blogs.showsOnline"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfILJu-5JPqAv3F5UD6YQUWIzGb_7Lr9c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -34,12 +34,17 @@ class FirestoreFeedFetcher(private val firestore: FirebaseFirestore,
             firestore.collection(dbEntryName)
                 .get()
                 .addOnSuccessListener { result ->
-                    val blogPosts: List<BlogPost> = result.documents.map { documentSnapshot ->
-                        val blogPost = documentSnapshot.toObject(BlogPost::class.java)
-                        blogPost?.id = documentSnapshot.id
-                        blogPost?.categoryName = dbEntryName
-                        blogPost
-                    }.filterNotNull()
+                    val blogPosts: List<BlogPost> = result.documents.mapNotNull { documentSnapshot ->
+                        try {
+                            documentSnapshot.toObject(BlogPost::class.java)?.apply {
+                                id = documentSnapshot.id
+                                categoryName = dbEntryName
+                            }
+                        } catch (e: Exception) {
+                            Log.w("wow", "fetchFeed: skipping malformed document ${documentSnapshot.id}", e)
+                            null
+                        }
+                    }
 
                     blogFeed = BlogFeed().apply {
                         val postTags: ArrayList<PostTag> = arrayListOf()

@@ -1,5 +1,6 @@
 package com.triPCups.blogs.showsOnline.ui.home
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,6 +13,7 @@ import com.triPCups.blogs.base.models.NavigationEvents
 import com.triPCups.blogs.base.repos.navigation_manager.NavigationManager
 import com.triPCups.blogs.showsOnline.common.Constants
 import com.triPCups.blogs.showsOnline.custom.FirestoreFeedFetcher
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
@@ -32,8 +34,15 @@ class HomeViewModel(
             //todo keep debugging here
 //            val feed = getOldShows()
 
-            val feed = feedFetcher.fetchFeed(categoryName)
-            feedLiveData.postValue(feed)
+            try {
+                val feed = feedFetcher.fetchFeed(categoryName)
+                feedLiveData.postValue(feed)
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                Log.e("wow", "fetchFeed: failed to fetch $categoryName", e)
+                navigationManager.showError(e.localizedMessage ?: "unknown Error")
+            }
         }
     }
 

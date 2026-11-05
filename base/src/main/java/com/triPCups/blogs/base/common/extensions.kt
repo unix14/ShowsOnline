@@ -152,7 +152,11 @@ fun String.openUrl(context: Context) {
             .setExitAnimations(context, R.anim.slide_in_left, R.anim.slide_out_right)
             .build().launchUrl(context, Uri.parse(this))
     } catch (e: Throwable) {
-        context.startActivity(Intent.parseUri(URLUtil.guessUrl(this), 0))
+        try {
+            context.startActivity(Intent.parseUri(URLUtil.guessUrl(this), 0))
+        } catch (fallbackError: Exception) {
+            Log.e("openUrl", "Unable to open url: $this", fallbackError)
+        }
     }
 }
 

@@ -84,13 +84,12 @@ class FirestoreCommentPoster(
     ): CommentPoster.CommentPosterEvents {
         return suspendCoroutine { continuation ->
 //            comment.author = invitationsRepository.currentUser.value?.name ?: anonNameGenerator.generate()
-            var newComments = post.comments.comments
-            post.comments.comments?.filter { it.id != comment.id }?.apply {
-                newComments = this as ArrayList<PostComment>
-                post.comments.comments = newComments
-            } ?: kotlin.run {
+            val currentComments = post.comments.comments
+            if (currentComments == null) {
                 continuation.resume(CommentPoster.CommentPosterEvents.Error("wrong comment id"))
+                return@suspendCoroutine
             }
+            post.comments.comments = ArrayList(currentComments.filter { it.id != comment.id })
 
             val docRef = firestore.collection(post.categoryName ?: Constants.databaseEntryName).document(post.id ?: "first")
             firestore.runTransaction { transaction ->

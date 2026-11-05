@@ -35,7 +35,7 @@ class ReadPostFragment : BaseFragment<FragmentReadPostBinding>(),
     private val mainViewModel by sharedViewModel<MainViewModel>()
 
     override lateinit var binding: FragmentReadPostBinding
-    private lateinit var post: BlogPost
+    private var post: BlogPost? = null
 
 //    val args: ReadPostFragmentArgs by navArgs()
 
@@ -78,11 +78,11 @@ class ReadPostFragment : BaseFragment<FragmentReadPostBinding>(),
         return when(item.itemId) {
             R.id.action_edit -> {
                 //enter edit mode
-                blogViewModel.showEditPostScreen(post)
+                post?.let { blogViewModel.showEditPostScreen(it) }
                 true
             }
             R.id.share_post -> {
-                post.shareShow(requireContext())
+                post?.shareShow(requireContext())
                 true
             }
 //            R.id.action_new -> {
@@ -158,7 +158,7 @@ class ReadPostFragment : BaseFragment<FragmentReadPostBinding>(),
     }
 
     override fun onPostCommentAdded(newPostComment: PostComment) {
-        viewModel.addCommentToPost(newPostComment, post)
+        post?.let { viewModel.addCommentToPost(newPostComment, it) }
     }
 
 }

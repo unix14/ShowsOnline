@@ -51,23 +51,25 @@ class FeedTagsAdapter(
 
         init {
             tagCardView.setOnClickListener {
+                val position = adapterPosition
+                if (position == RecyclerView.NO_POSITION) return@setOnClickListener
                 onFilterByTag?.let {
-                    if(selectedTagIndex == adapterPosition) {
+                    if(selectedTagIndex == position) {
                         // clear
                         selectedTagIndex = -1
                         onFilterByTag.invoke(null)
                     } else {
                         // select
-                        selectedTagIndex = adapterPosition
+                        selectedTagIndex = position
                         onFilterByTag.invoke(tag)
                     }
                     notifyDataSetChanged()
                 } ?: kotlin.run {
                     if(isAdmin) {
                         possibleTags.apply {
-                            get(adapterPosition).let { removedTag ->
+                            get(position).let { removedTag ->
                                 remove(removedTag)
-                                notifyItemRemoved(adapterPosition)
+                                notifyItemRemoved(position)
                                 onAdminRemoveTag?.invoke(removedTag)
                             }
                         }

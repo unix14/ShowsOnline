@@ -1,0 +1,35 @@
+{
+    "name": "הצגות אונליין",
+    "short_name": "הצגות אונליין",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#039BE5",
+    "theme_color": "#039BE5",
+    "description": "קטלוג הצגות אונליין",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}

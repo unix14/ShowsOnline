@@ -1,0 +1,62 @@
+name: Deploy to Firebase Hosting
+
+# Deploys https://showz-online.web.app whenever a version tag (v1.2.3) is pushed.
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-hosting
+  cancel-in-progress: false
+
+env:
+  FIREBASE_PROJECT: shows-online-d3274
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - run: flutter pub get
+      - run: flutter analyze
+      - run: flutter test
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+
+      - name: Resolve Firebase web config
+        id: defines
+        env:
+          # Optional repo variables; when unset the config is read via the Firebase CLI.
+          FIREBASE_API_KEY: ${{ vars.FIREBASE_API_KEY }}
+          FIREBASE_APP_ID: ${{ vars.FIREBASE_APP_ID }}
+        run: echo "flags=$(./scripts/gen_dart_defines.sh)" >> "$GITHUB_OUTPUT"
+
+      - name: Build web
+        run: |
+          flutter build web --release \
+            --build-name="${GITHUB_REF_NAME#v}" \
+            ${{ steps.defines.outputs.flags }}
+
+      - name: Deploy to Firebase Hosting (live)
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: ${{ env.FIREBASE_PROJECT }}
+          channelId: live

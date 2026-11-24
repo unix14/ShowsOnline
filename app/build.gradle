@@ -8,6 +8,30 @@ plugins {
     id 'com.google.firebase.crashlytics'
 }
 
+// Release signing is configured outside version control. Values are read from
+// <project root>/keystore.properties (gitignored, see keystore.properties.example)
+// and fall back to environment variables. When any value is missing, the release
+// signing config is skipped so debug builds work on any machine.
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('keystore.properties')
+if (keystorePropertiesFile.exists()) {
+    keystorePropertiesFile.withInputStream { keystoreProperties.load(it) }
+}
+def signingValue = { String propertyKey, String envKey ->
+    def value = keystoreProperties.getProperty(propertyKey) ?: System.getenv(envKey)
+    return value?.trim() ? value.trim() : null
+}
+def releaseSigning = [
+        storeFile    : signingValue('storeFile', 'SHOWSONLINE_KEYSTORE_FILE'),
+        storePassword: signingValue('storePassword', 'SHOWSONLINE_KEYSTORE_PASSWORD'),
+        keyAlias     : signingValue('keyAlias', 'SHOWSONLINE_KEY_ALIAS'),
+        keyPassword  : signingValue('keyPassword', 'SHOWSONLINE_KEY_PASSWORD'),
+]
+def hasReleaseSigning = releaseSigning.values().every { it != null }
+if (!hasReleaseSigning) {
+    logger.info('Release signing not configured (no keystore.properties or SHOWSONLINE_* env vars); release builds will be unsigned.')
+}
+
 android {
     compileSdk 33
     namespace "com.triPCups.blogs.showsOnline"
@@ -23,16 +47,21 @@ android {
     }
 
     signingConfigs {
-        release {
-            keyAlias 'uploaderKey'
-            keyPassword 'e159263Ee'
-            storeFile file("C:\\Users\\Workstation\\Desktop\\showsOnline\\keystore\\keystore.jks")
-            storePassword 'e159263Ee'
+        if (hasReleaseSigning) {
+            release {
+                storeFile rootProject.file(releaseSigning.storeFile)
+                storePassword releaseSigning.storePassword
+                keyAlias releaseSigning.keyAlias
+                keyPassword releaseSigning.keyPassword
+            }
         }
     }
 
     buildTypes {
         release {
+            if (hasReleaseSigning) {
+                signingConfig signingConfigs.release
+            }
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -64,5 +93,7 @@ dependencies {
 
     //ads
     implementation 'com.google.android.gms:play-services-ads:22.5.0'
+
+    testImplementation 'junit:junit:4.13.2'
 
 }

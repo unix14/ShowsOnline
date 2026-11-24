@@ -7,9 +7,8 @@ import com.triPCups.blogs.base.repos.feed_fetcher.FeedFetcher
 
 class FirestoreRelevantPostsFetcher(private val feedFetcher: FeedFetcher) : RelevantPostsFetcher {
 
-    private val allPosts: ArrayList<BlogPost> by lazy {
-        feedFetcher.cache?.posts ?: arrayListOf()
-    }
+    private val allPosts: ArrayList<BlogPost>
+        get() = feedFetcher.cache?.posts ?: arrayListOf()
 
     override fun getPostsByTag(tag: String): ArrayList<BlogPost> {
         val sameTagList = arrayListOf<BlogPost>()

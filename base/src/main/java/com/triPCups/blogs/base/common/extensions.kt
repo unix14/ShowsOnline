@@ -68,7 +68,10 @@ fun View.setOnClickDatePickerDialog(context: Context, callback: (Date)-> Unit) {
         val day = c.get(Calendar.DAY_OF_MONTH)
 
         val dpd = DatePickerDialog(context, { view, year, monthOfYear, dayOfMonth ->
-            val newDate = Date(year, monthOfYear, dayOfMonth)
+            val newDate = Calendar.getInstance().apply {
+                clear()
+                set(year, monthOfYear, dayOfMonth)
+            }.time
             callback.invoke(newDate)
         }, year, month, day)
         dpd.datePicker.updateDate(year, month, day)

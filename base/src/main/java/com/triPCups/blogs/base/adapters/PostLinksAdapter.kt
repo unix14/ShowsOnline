@@ -64,7 +64,7 @@ class PostLinksAdapter(private var list: ArrayList<HyperLink> = arrayListOf(), v
 
     fun addEmptyLink() {
         list.add(HyperLink())
-        notifyItemInserted(list.size)
+        notifyItemInserted(list.size - 1)
         listener?.onEditLinks(list)
     }
 
@@ -74,22 +74,25 @@ class PostLinksAdapter(private var list: ArrayList<HyperLink> = arrayListOf(), v
         private val linkUrl = v.findViewById<EditText>(R.id.post_link_edit_link)
         private val deleteBtn = v.findViewById<ImageView>(R.id.post_links_delete_btn)
 
-        private val link: HyperLink
-            get() = list[adapterPosition]
-
         init {
             linkText.doAfterTextChanged {
-                link.text = it.toString()
+                val position = adapterPosition
+                if (position == RecyclerView.NO_POSITION) return@doAfterTextChanged
+                list[position].text = it.toString()
                 listener?.onEditLinks(list)
             }
             linkUrl.doAfterTextChanged {
-                link.url = it.toString()
+                val position = adapterPosition
+                if (position == RecyclerView.NO_POSITION) return@doAfterTextChanged
+                list[position].url = it.toString()
                 listener?.onEditLinks(list)
             }
 
             deleteBtn.setOnClickListener {
-                list.remove(link)
-                notifyItemRemoved(adapterPosition)
+                val position = adapterPosition
+                if (position == RecyclerView.NO_POSITION) return@setOnClickListener
+                list.removeAt(position)
+                notifyItemRemoved(position)
                 listener?.onEditLinks(list)
             }
         }

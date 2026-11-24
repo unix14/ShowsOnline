@@ -11,7 +11,7 @@ fun BlogPost.shareShow(context: Context) {
     i.type = "text/plain"
     i.putExtra(Intent.EXTRA_SUBJECT, "שיתוף הצגה: $title")
     i.putExtra(Intent.EXTRA_TEXT,
-        "${links?.first()?.url ?: ""}\n${getRandomStartPhrase()} \"$title\"\n\n${getRandomC2APhrase()}\n\n${getDownloadLinkPhrase(context)}")
+        "${links?.firstOrNull()?.url ?: ""}\n${getRandomStartPhrase()} \"$title\"\n\n${getRandomC2APhrase()}\n\n${getDownloadLinkPhrase(context)}")
     context.startActivity(Intent.createChooser(i, "שיתוף הצגה"))
 }
 

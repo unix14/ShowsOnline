@@ -49,6 +49,8 @@ class MainActivity : AppCompatActivity() {
     private val drawerLayout: DrawerLayout by lazy { binding.drawerLayout }
     private val navView: NavigationView by lazy { binding.navView }
 
+    private var adView: AdView? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -178,7 +180,9 @@ class MainActivity : AppCompatActivity() {
     private fun initAds() = with(binding) {
         root.findViewById<FrameLayout>(R.id.adContainer)?.apply {
             MobileAds.initialize(this@MainActivity) {
+                if (this@MainActivity.isFinishing || this@MainActivity.isDestroyed) return@initialize
                 val adView = AdView(this@MainActivity)
+                this@MainActivity.adView = adView
                 addView(adView)
                 adView.apply {
                     setAdSize(AdSize.BANNER)
@@ -300,12 +304,24 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onPause() {
+        adView?.pause()
+        super.onPause()
+    }
+
     override fun onResume() {
         super.onResume()
+        adView?.resume()
 //        navController.setOnBackPressedDispatcher(object : OnBackPressedDispatcher() {
 //
 //        })
 //        binding.appBarMain.toolbar.title = getString(R.string.app_name) //todo bring category from VM
+    }
+
+    override fun onDestroy() {
+        adView?.destroy()
+        adView = null
+        super.onDestroy()
     }
 
     //
